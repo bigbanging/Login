@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+{% load static %}
+<head>
+	<title>欢迎登陆</title>
+	<!-- Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Student Login Form Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta-Tags -->
+	<!-- Stylesheets -->
+	<link href="{% static 'css/login_style.css' %}" rel='stylesheet' type='text/css' />
+	<!--// Stylesheets -->
+	<!--online fonts-->
+{#	<link href="//fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">#}
+	<!--//online fonts-->
+</head>
+
+<body>
+	<h1>用户登录信息</h1>
+	<div class="w3ls-login box">
+		<img src="{% static 'img/logo.png' %}" alt="logo_img" />
+		<!-- form starts here -->
+		<form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+			<div class="agile-field-txt">
+{#				<input type="email" name="username" placeholder="你的賬戶（用戶名/郵箱/手機號）" required="" />#}
+				<input type="text" name="username" placeholder="你的賬戶（用戶名/郵箱/手機號）" required="" />
+			</div>
+			<div class="agile-field-txt">
+				<input type="password" name="password" placeholder="密碼" required="" id="myInput" />
+				<div class="agile_label">
+					<input id="check3" name="check3" type="checkbox" value="show password">
+					<label class="check" for="check3">記住賬號</label>
+				</div>
+			</div>
+			<div class="w3ls-bot">
+				<input type="submit" value="登錄">
+			</div>
+            <div>
+                {% if login_form.errors %}
+                    {% for key, error in login_form.errors.items %}
+                        {{ error }}
+                    {% endfor %}
+                {% else %}
+                {{ msg }}
+                {% endif %}
+            </div>
+		</form>
+	</div>
+	<!-- //form ends here -->
+	<!--copyright-->
+	<div class="copy-wthree">
+		<p>© 2018 Student Login Form. All Rights Reserved.| Design by
+				<a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+	</div>
+	<!--//copyright-->
+</body>
+
+</html>
